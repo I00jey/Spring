@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--  Thymeleaf 템플릿 소개  -->
+<p th:text="안녕하세요. + ${msg}"></p>
+<!-- 참고) 태그 내부에 텍스트는 화면 출력 X -->
+<p th:text="${msg}">태그 내부 텍스트 출력 확인</p>
+<br>
+
+<!-- Thymeleaf 표현식과 문법 -->
+<h3>th:text 예시</h3>
+<p>텍스트 표현</p>
+<p th:text="안녕하세요. + ${msg}"></p>
+<br>
+
+<h3>th:utext 예시</h3>
+<p>HTML 태그를 반영한 텍스트</p>
+<p th:utext="${uText}"></p>
+<br>
+
+<h3>th:value 예시</h3>
+<p>HTML 요소의 value 속성값을 지정할 때 사용</p>
+<input th:value="${value}">
+<br>
+
+
+<h3>th:with 예시</h3>
+<p>변수 값을 지정해서 사용할 때 사용</p>
+<p>서버에서 전달받은 withValue 속성의 값을 temp 라는 변수에 저장해서 사용</p>
+<div th:with="temp=${withValue}" th:text="${temp}"></div>
+<br>
+
+<h3>th:href 예시</h3>
+<p>경로 뒤에 ()괄호를 붙여서 안에 필요한 파라미터 값을 model 을 통해 주입받은 변수나 자체 변수로 넣어줄 수 있음</p>
+<a th:href="@{/hi}">Link1</a>
+<a th:href="@{/{id}(id=${link})}">Link2</a>
+<a th:href="@{https://www.google.com}">Google</a>
+<br>
+
+<h3>th:src 예시</h3>
+<img th:src="${imgsrc}"  width="200px" alt="ant">
+<br>
+
+<h3>th:switch 예시</h3>
+<p>switch case 문을 다룰 때 사용. <br>*은 switch-case 문의 default 를 의미한다.</p>
+<div th:switch="${userRole}">
+    <p th:case="admin">Hello, admin</p>
+    <p th:case="user">Hello, user</p>
+    <p th:case="*">Hello, unknown</p>
+</div>
+<br>
+
+<h3>th:if, th:unless 예시</h3>
+<!-- unless 는 if 없이도 사용 가능, 조건이 false 일 때 실행 됨 -->
+<!-- if 와 동일한 조건이 있다면 둘이 짝꿍처럼 씀 -->
+<!-- 조건 안에 and, or, &&, || 사용 가능 -->
+<div>
+    <p th:if="${isAdmin}">Welcome, Admin</p>
+    <p th:unless="${isAdmin}">Welcome, Unknown</p>
+</div>
+<br>
+
+<h3>th:each 예시</h3>
+<ul>
+    <li th:each="name:${names}" th:text="${name}"></li>
+</ul>
+<br>
+
+<h3>클래스 예시</h3>
+<div th:text="${classHello.getAge()}"></div>
+
+
+</body>
+</html>
