@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"  xmlns:th="http://www.thymeleaf.org">
+    <title>Title</title>
+</head>
+<body>
+<h4>폼 전송 - 실습</h4>
+<form action="/post/prac/res" method="post">
+    <fieldset>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name">
+        <br>
+        <label for="gender">성별</label>
+        <div id="gender">
+            <input type="radio" name="gender" value="남자"> 남자
+            <input type="radio" name="gender" value="여자"> 여자
+        </div>
+        <label for="birth">생년월일</label>
+        <div id="birth">
+            <select name="year" id="year">
+                <option value="1997">1997</option>
+                <option value="1998">1998</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+            </select>
+            <select name="month" id="month">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+            <select name="date" id="date">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
+        </div>
+        <label for="hobby">관심사</label>
+        <div id="hobby">
+            <input type="checkbox" name="hobby" value="여행">여행
+            <input type="checkbox" name="hobby" value="패션">패션
+            <input type="checkbox" name="hobby" value="음식">음식
+        </div>
+    </fieldset>
+    <button>회원가입</button>
+</form>
+</body>
+</html>
