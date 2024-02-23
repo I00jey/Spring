@@ -3,6 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>RestApi</title>
+
+    <!--axios cdn 추가 -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 </head>
 <body>
 <h1>======================= GET 요청 ======================</h1>
@@ -91,5 +95,168 @@
         <button>POST 전송 (RequestBody O)</button>
     </form>
 </div>
+<hr>
+<h1>======================= VO 이용 ======================</h1>
+<div style="display: flex">
+    <form action="/vo/res1" method="get" style="margin-right: 20px;">
+        <h3>Get - VO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button>GET 전송</button>
+    </form>
+    <form action="/vo/res2" method="post" style="margin-right: 20px;">
+        <h3>POST - VO</h3>
+
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button>POST 전송 (RequestBody X)</button>
+    </form>
+    <form action="/vo/res3" method="post" style="margin-right: 20px;">
+        <h3>POST - VO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button>POST 전송 (RequestBody O)</button>
+    </form>
+</div>
+<hr>
+<h1>======================= DTO 이용 with axios ======================</h1>
+<div style="display: flex">
+    <form id="form_dto1" style="margin-right: 20px;">
+        <h3>Get - DTO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button type="button" onclick="dtoRes1()">GET (일반)</button>
+        <button type="button" onclick="dtoRes2()">GET (DTO)</button>
+    </form>
+    <form id="form_dto2" style="margin-right: 20px;">
+        <h3>POST - DTO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button type="button" onclick="dtoRes3()">POST (일반)</button>
+        <button type="button" onclick="dtoRes4()">POST (DTO) - RequestBody X</button>
+        <button type="button" onclick="dtoRes5()">POST (DTO) - RequestBody O</button>
+    </form>
+</div>
+<hr>
+<h1>======================= VO 이용 with axios ======================</h1>
+<div style="display: flex">
+    <form id="form_vo1" style="margin-right: 20px;">
+        <h3>Get - VO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button type="button" onclick="voRes1()">GET (일반)</button>
+        <button type="button" onclick="voRes2()">GET (VO)</button>
+    </form>
+    <form id="form_vo2" style="margin-right: 20px;">
+        <h3>POST - VO</h3>
+        이름 : <input type="text" name="name">
+        나이 : <input type="text" name="age">
+        <br>
+        <button type="button" onclick="voRes3()">POST (일반)</button>
+        <button type="button" onclick="voRes4()">POST (VO) - RequestBody X</button>
+        <button type="button" onclick="voRes5()">POST (VO) - RequestBody O</button>
+    </form>
+</div>
+<script>
+    function dtoRes1() {
+        const form = document.getElementById("form_dto1");
+        axios
+            .get(`/axios/res1?name=${form.name.value}&age=${form.age.value}`)
+            .then((res) => {
+                console.log(res);
+                console.log("dtoRes1 : ", res.data);
+            });
+    }
+    function dtoRes2() {
+        const form = document.getElementById("form_dto1");
+        axios
+            .get(`/axios/res2?name=${form.name.value}&age=${form.age.value}`)
+            .then((res) => {
+                console.log(res);
+                console.log("dtoRes2 : ", res.data);
+            });
+    }
+    function dtoRes3() {
+        var form = document.getElementById("form_dto2");
+        axios
+            .post(`/axios/res3`, { name: form.name.value, age: form.age.value })
+            .then((res) => {
+                console.log(res);
+                console.log("dtoRes3 : ", res.data);
+            });
+    }
+    function dtoRes4() {
+        var form = document.getElementById("form_dto2");
+        axios
+            .post(`/axios/res4`, { name: form.name.value, age: form.age.value })
+            .then((res) => {
+                console.log(res);
+                console.log("dtoRes4 : ", res.data);
+            });
+    }
+    function dtoRes5() {
+        var form = document.getElementById("form_dto2");
+        axios
+            .post(`/axios/res5`, { name: form.name.value, age: form.age.value })
+            .then((res) => {
+                console.log(res);
+                console.log("dtoRes5 : ", res.data);
+            });
+    }
+
+    function voRes1() {
+    const form = document.getElementById("form_vo1");
+    axios
+        .get(`/axios/vo/res1?name=${form.name.value}&age=${form.age.value}`)
+        .then((res) => {
+            console.log(res);
+            console.log("voRes1 : ", res.data);
+        });
+}
+function voRes2() {
+    const form = document.getElementById("form_vo1");
+    axios
+        .get(`/axios/vo/res2?name=${form.name.value}&age=${form.age.value}`)
+        .then((res) => {
+            console.log(res);
+            console.log("voRes2 : ", res.data);
+        });
+}
+function voRes3() {
+    var form = document.getElementById("form_vo2");
+    axios
+        .post(`/axios/vo/res3`, { name: form.name.value, age: form.age.value })
+        .then((res) => {
+            console.log(res);
+            console.log("voRes3 : ", res.data);
+        });
+}
+function voRes4() {
+    var form = document.getElementById("form_vo2");
+    axios
+        .post(`/axios/vo/res4`, { name: form.name.value, age: form.age.value })
+        .then((res) => {
+            console.log(res);
+            console.log("voRes4 : ", res.data);
+        });
+}
+function voRes5() {
+    var form = document.getElementById("form_vo2");
+    axios
+        .post(`/axios/vo/res5`, { name: form.name.value, age: form.age.value })
+        .then((res) => {
+            console.log(res);
+            console.log("voRes5 : ", res.data);
+        });
+}
+
+
+</script>
 </body>
 </html>
