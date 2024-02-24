@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>유저 정보 조회</h1>
+
+<table>
+    <tr>
+        <th>No.</th>
+        <th>ID</th>
+        <th>이름</th>
+        <th>닉네임</th>
+    </tr>
+    <tr th:each="user:${list}">
+        <td th:text="${user.getNo()}"></td>
+        <td th:text="${user.getId()}"></td>
+        <td th:text="${user.getName()}"></td>
+        <td th:text="${user.getNickname()}"></td>
+    </tr>
+</table>
+</body>
+</html>

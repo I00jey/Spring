@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="codingon.codingonspringbootmybatis.mapper.UserMapper">
+<!--    mapper 사이의 코드를 작성-->
+    <select id="retrieveAll" resultType="codingon.codingonspringbootmybatis.domain.User">
+        SELECT user.* FROM user
+<!--        WHERE 조건 추가-->
+        <where>
+            <if test="name!=null">
+                AND name = #{name}
+            </if>
+        </where>
+    </select>
+</mapper>
