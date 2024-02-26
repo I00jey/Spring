@@ -13,6 +13,14 @@
         </option>
       </GradleProjectSettings>
       <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/codingon-spring-boot-jpa" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/codingon-spring-boot-jpa" />
+          </set>
+        </option>
+      </GradleProjectSettings>
+      <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/codingon-spring-boot-mybatis" />
         <option name="modules">
           <set>
